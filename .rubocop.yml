@@ -9,6 +9,9 @@ TrailingWhitespace:
 
 TrailingEmptyLines:
     Enabled: false
+
+StringLiterals:
+    Enabled: false
 # Overwrite or add rules to create your own house style
 #
 # # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
