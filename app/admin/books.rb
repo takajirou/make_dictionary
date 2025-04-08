@@ -34,7 +34,7 @@ ActiveAdmin.register Book do
       row :updated_at
       row :image do |book|
         if book.image_link.present?
-          image_tag book.image_link, height: '100'
+          image_tag book.image_link, height: "100"
         end
       end
       # 著者一覧を表示

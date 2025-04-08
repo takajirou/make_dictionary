@@ -1,16 +1,14 @@
 class BooksController < ApplicationController
-  def search 
+  def search
     @book = Book.new
-
       if params[:search].nil?
         return
       elsif params[:search].blank?
-        flash.now[:danger] = '検索キーワードが入力されていません'
-        return
+        flash.now[:danger] = "検索キーワードが入力されていません"
       else
         url = "https://www.googleapis.com/books/v1/volumes"
         text = params[:search]
-        res = Faraday.get(url, q: text, langRestrict: 'ja', maxResults: 20)
+        res = Faraday.get(url, q: text, langRestrict: "ja", maxResults: 20)
         @google_books = JSON.parse(res.body)
       end
   end
