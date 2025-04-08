@@ -18,10 +18,10 @@ gem "stimulus-rails"
 gem "jbuilder"
 # HTTPリクエスト用
 gem "httparty"
-gem 'faraday'
+gem "faraday"
 # DB管理
-gem 'activeadmin'
-gem 'devise'
+gem "activeadmin"
+gem "devise"
 
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
