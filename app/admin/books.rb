@@ -1,7 +1,7 @@
 ActiveAdmin.register Book do
   # 編集可能なパラメータを設定
   permit_params :title, :published_date, :info_link, :image_link, :systemid, :user_id
-  
+
   # 一覧表示のカラム設定
   index do
     selectable_column
@@ -13,14 +13,14 @@ ActiveAdmin.register Book do
     column :created_at
     actions
   end
-  
+
   # フィルター設定
   filter :title
   filter :systemid
   filter :published_date
   filter :user
   filter :created_at
-  
+
   # 詳細表示のカスタマイズ
   show do
     attributes_table do
@@ -45,7 +45,7 @@ ActiveAdmin.register Book do
       end
     end
   end
-  
+
   # フォームカスタマイズ
   form do |f|
     f.inputs "書籍情報" do

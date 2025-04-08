@@ -1,6 +1,6 @@
 ActiveAdmin.register Author do
   permit_params :name
-  
+
   index do
     selectable_column
     id_column
@@ -11,10 +11,10 @@ ActiveAdmin.register Author do
     column :created_at
     actions
   end
-  
+
   filter :name
   filter :created_at
-  
+
   show do
     attributes_table do
       row :id
@@ -22,7 +22,7 @@ ActiveAdmin.register Author do
       row :created_at
       row :updated_at
     end
-    
+
     panel "著書一覧" do
       table_for author.books do
         column :title
