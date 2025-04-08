@@ -1,5 +1,5 @@
 class Book < ApplicationRecord
-  belongs_to :user
+  # belongs_to :user
   has_many :book_authors, dependent: :destroy
   has_many :authors, through: :book_authors
   
@@ -13,5 +13,13 @@ class Book < ApplicationRecord
       self.book_authors.create(author_id: author.id)
     end
     true
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "id", "image_link", "info_link", "published_date", "systemid", "title", "updated_at", "user_id"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["authors", "book_authors", "user"]
   end
 end
