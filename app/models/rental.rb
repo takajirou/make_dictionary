@@ -23,4 +23,12 @@ class Rental < ApplicationRecord
       book.update(is_available: true)
     end
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["book_id", "borrowed_at", "created_at", "due_date", "id", "returned_at", "updated_at", "user_id"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["book", "user"]
+  end
 end
