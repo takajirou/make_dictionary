@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  library: one
+  role: MyString
+  joined_at: 2025-04-10 23:50:53
+
+two:
+  user: two
+  library: two
+  role: MyString
+  joined_at: 2025-04-10 23:50:53
