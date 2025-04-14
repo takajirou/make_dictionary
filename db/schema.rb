@@ -10,7 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_14_092204) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_14_150022) do
+  create_table "books", force: :cascade do |t|
+    t.string "title"
+    t.string "author"
+    t.string "description"
+    t.string "isbn"
+    t.integer "library_id", null: false
+    t.boolean "is_available"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["library_id"], name: "index_books_on_library_id"
+  end
+
+  create_table "libraries", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "owner_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_libraries_on_owner_id"
+  end
+
+  create_table "library_members", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "library_id", null: false
+    t.string "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["library_id"], name: "index_library_members_on_library_id"
+    t.index ["user_id"], name: "index_library_members_on_user_id"
+  end
+
+  create_table "rentals", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "book_id", null: false
+    t.datetime "borrowed_at"
+    t.date "due_data"
+    t.datetime "returned_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_rentals_on_book_id"
+    t.index ["user_id"], name: "index_rentals_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -22,4 +65,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_14_092204) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "books", "libraries"
+  add_foreign_key "libraries", "owners"
+  add_foreign_key "library_members", "libraries"
+  add_foreign_key "library_members", "users"
+  add_foreign_key "rentals", "books"
+  add_foreign_key "rentals", "users"
 end
